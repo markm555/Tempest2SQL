@@ -14,8 +14,8 @@ namespace Tempest
     class Program
     {
         private static SqlConnection con1;
-        private static string WeatherToken = "a307d230-391e-4b32-a807-80b15072982e";
-        private static string StationID = "54207";
+        private static string WeatherToken = "<Your key here>";
+        private static string StationID = "<Your Station ID here>";
         public class current
         {
             public DateTime time { get; set; }
@@ -46,6 +46,8 @@ namespace Tempest
             public string is_precip_local_day_rain_check { get; set; }
             public string is_precip_local_yesterday_rain_check { get; set; }
         }
+        
+        // Save for future use
         //public static DateTime? Epoch(string unixTimeStamp)
         //{
         //    //int dt1 = Convert.Toint(unixTimeStamp);
@@ -62,8 +64,7 @@ namespace Tempest
          */
         {
             var localcon = new SqlConnection();
-            //localcon.ConnectionString = "Data Source=sqldb;Initial Catalog=DFWeather;user id=markm;Password=Demopass@word1";
-            localcon.ConnectionString = "Data Source=SQLDB;Initial Catalog=DFWeather;Integrated Security = True";
+            localcon.ConnectionString = "Data Source=<YourSQLServer;Initial Catalog=DFWeather;Integrated Security = True";
             localcon.Open();
 
             return localcon;
@@ -163,6 +164,7 @@ namespace Tempest
                         cmd1.Parameters.AddWithValue("@param26", record.is_precip_local_day_rain_check);
                         cmd1.Parameters.AddWithValue("@param27", record.is_precip_local_yesterday_rain_check);
 
+                        //Save for future use
                         //Console.WriteLine(DateTime.Now);
                         //Console.WriteLine("Weather Condition: "+record.conditions);
                         //Console.WriteLine("Icon: "+record.icon);
